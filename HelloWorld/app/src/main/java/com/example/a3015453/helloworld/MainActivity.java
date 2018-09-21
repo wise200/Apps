@@ -14,10 +14,16 @@ public class MainActivity extends AppCompatActivity {
 
         ConstraintLayout bg = (ConstraintLayout) findViewById(R.id.main_bg);
 
-        bg.setOnClickListener(new View.OnClickListener() {
+        bg.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+            public void onSwipeLeft() {
+                startActivity(new Intent(MainActivity.this, ThisWeek.class));
+            }
+
+            @Override
+            public void onSwipeRight() {
+                startActivity(new Intent(MainActivity.this, MyClasses.class));
             }
         });
     }
