@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shooter</string>
+    <string name="warning">Avoid the Asteroid!</string>
+    <string name="count"> </string>
+    <string name="collision">Collision!</string>
+    <string name="score">Score: 0</string>
+
+</resources>

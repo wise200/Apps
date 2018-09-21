@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Chess Timer</string>
+    <string name="default_name">Justin</string>
+    <string name="default_time">4:00</string>
+    <string name="two_fifty_five">255</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="select">Select</string>
+    <string name="add">Add Player</string>
+    <string name="start">Start Timer</string>
+    <string name="name">Name</string>
+    <string name="pause">Pause</string>
+    <string name="reset">Reset</string>
+</resources>

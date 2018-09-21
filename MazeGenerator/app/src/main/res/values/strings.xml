@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MazeGenerator</string>
+    <string name="change_dimensions">Change Dimensions</string>
+    <string name="rows">Rows</string>
+    <string name="cols">Columns</string>
+    <string name="go">Go</string>
+    <string name="ten">10</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="change_color">Change Color</string>
+    <string name="two_fifty_five">255</string>
+    <string name="maze_generator">Maze Generator</string>
+    <string name="choose_dims">Choose Your Dimensions</string>
+    <string name="choose_color">Choose Your Color</string>
+    <string name="lock">Lock Ratio</string>
+</resources>

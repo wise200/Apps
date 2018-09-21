@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.justinwise.chesstimer.TimerActivity"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/rotatedName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_name"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:rotation="180"/>
+        <TextView
+            android:id="@+id/currentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_time"
+            android:textColor="@color/white"
+            android:textSize="80sp"/>
+        <TextView
+            android:id="@+id/currentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_name"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    
+    <View
+        android:id="@+id/inner"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/empty_circle"
+        android:layout_gravity="center"
+        android:alpha=".4"/>
+
+    <View
+        android:id="@+id/middle"
+        android:layout_width="285dp"
+        android:layout_height="285dp"
+        android:background="@drawable/empty_circle"
+        android:layout_gravity="center"
+        android:alpha=".7"/>
+
+    <View
+        android:id="@+id/outer"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:background="@drawable/empty_circle"
+        android:layout_gravity="center"/>
+
+
+
+
+</FrameLayout>

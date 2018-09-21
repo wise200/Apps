@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Memory Trainer</string>
+    <string name="action_settings">Settings</string>
+    <string name="buttonString">Flash</string>
+    <string name="titleString">What did you see?</string>
+    <string name="oneS">1 S, and 5 T's</string>
+    <string name="twoS">2 S's, and 4 T's</string>
+    <string name="threeS">3 S's, and 3 T's</string>
+    <string name="fourS">4 S's, and 2 T's</string>
+    <string name="fiveS">5 S's, and 1 T's</string>
+    <string name="sixS">6 S's, and 0 T's</string>
+    <string name="noS">0 S's, and 6 T's</string>
+    <string name="checkNow">Check Now</string>
+</resources>

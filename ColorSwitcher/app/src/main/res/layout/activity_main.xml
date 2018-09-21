@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="memorytrainer.jwise200.com.colorswitcher.MainActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <RelativeLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#999999">
+
+        <TextView
+            android:id="@+id/backgroundBar1"
+            android:layout_width="50dp"
+            android:layout_height="255dp"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:textColor="#33b5e5"
+            android:background="#FFFFFF"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="50dp" />
+        <TextView
+            android:id="@+id/backgroundBar2"
+            android:layout_width="50dp"
+            android:layout_height="255dp"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:textColor="#33b5e5"
+            android:background="#FFFFFF"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="150dp"/>
+        <TextView
+            android:id="@+id/backgroundBar3"
+            android:layout_width="50dp"
+            android:layout_height="255dp"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:textColor="#33b5e5"
+            android:background="#FFFFFF"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="250dp"/>
+
+        <TextView
+            android:id="@+id/progressBar1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#FF0000"
+            android:layout_alignBottom="@+id/backgroundBar1"
+            android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/progressBar2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00FF00"
+            android:layout_alignBottom="@+id/backgroundBar2"
+            android:layout_marginLeft="150dp"/>
+        <TextView
+            android:id="@+id/progressBar3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0000FF"
+            android:layout_alignBottom="@+id/backgroundBar3"
+            android:layout_marginLeft="250dp"/>
+
+    </RelativeLayout>
+
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

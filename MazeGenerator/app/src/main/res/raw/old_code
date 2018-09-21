@@ -1,0 +1,284 @@
+MainActivity.java-
+
+package com.justinwise.mazegenerator;
+
+import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.content.Context;
+import android.widget.GridView;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import Custom.*;
+
+
+public class MainActivity extends AppCompatActivity {
+    private Cell[][] cells;
+    private GridView grid;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //declare and fill cells array
+        cells = new Cell[3][3];
+        for (int r = 0; r < cells.length; r++)
+            for (int c = 0; c < cells[0].length; c++)
+                cells[r][c] = new Cell();
+
+        setContentView(R.layout.activity_main);
+
+        grid = (GridView) findViewById(R.id.grid);
+        grid.setNumColumns(cells[0].length);
+        grid.setColumnWidth(50);
+        //grid.setStretchMode(GridView.NO_STRETCH);
+        grid.setAdapter(new GridAdapter(this));
+
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                generateMaze(0, 0);
+            }
+        });
+    }
+
+    private void generateMaze(int row, int col)
+    {
+        //Ensure no cell is processed twice
+        if (cells[row][col].visited)
+            return;
+
+        cells[row][col].visited = true;
+        ArrayList<Adjacent> neighbors = shuffleList(findUnvisitedAdj(row, col));
+        for (Adjacent adjacent : neighbors)
+        {
+            removeWall(row, col, adjacent);
+            int neighborRow = row + adjacent.getRowDiff();
+            int neighborCol = col+ adjacent.getColDiff();
+            removeWall(neighborRow, neighborCol, adjacent.getOpposite());
+            generateMaze(neighborRow, neighborCol);
+        }
+    }
+
+    private void removeWall(int row, int col, Adjacent side)
+    {
+        cells[row][col].removeWall(side);
+        int pos = getPosInGrid(row, col);
+        View view = grid.getChildAt(pos);
+        ViewHolder holder = (ViewHolder) view.getTag();
+        updateCell(holder);
+    }
+
+    private ArrayList<Adjacent> findUnvisitedAdj(int row, int col)
+    {
+        ArrayList<Adjacent> adjacents = new ArrayList<Adjacent>();
+        if (row != 0 && !cells[row - 1][col].visited)
+            adjacents.add(Adjacent.TOP);
+        if (row != cells.length - 1 && !cells[row + 1][col].visited)
+            adjacents.add(Adjacent.BOTTOM);
+        if (col != 0 && !cells[row][col - 1].visited)
+            adjacents.add(Adjacent.LEFT);
+        if (col != cells.length - 1 && !cells[row][col + 1].visited)
+            adjacents.add(Adjacent.RIGHT);
+        return adjacents;
+    }
+
+    private ArrayList<Adjacent> shuffleList(ArrayList<Adjacent> list)
+    {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            int rand = (int) (Math.random() * i);
+            Adjacent temp = list.get(i);
+            list.set(i, list.get(rand));
+            list.set(rand, temp);
+        }
+        return list;
+    }
+
+    private void updateCell(ViewHolder holder)
+    {
+        holder.top.setVisibility(holder.cell.topWall ? View.VISIBLE : View.INVISIBLE);
+        holder.bottom.setVisibility(holder.cell.bottomWall ? View.VISIBLE : View.INVISIBLE);
+        holder.left.setVisibility(holder.cell.leftWall ? View.VISIBLE : View.INVISIBLE);
+        holder.right.setVisibility(holder.cell.rightWall ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    private int getPosInGrid(int row, int col)
+    {
+        return row * cells[0].length + col;
+    }
+
+    private class GridAdapter extends BaseAdapter
+    {
+        private Context myContext;
+        int numColumns;
+
+        public GridAdapter(Context c)
+        {
+            myContext = c;
+            numColumns = cells[0].length;
+        }
+
+
+        @Override
+        public int getCount() {
+            return cells.length * numColumns;
+        }
+
+        @Override
+        public Object getItem(int i) {
+            int row = i / numColumns;
+            int col = i % numColumns;
+            return cells[row][col];
+        }
+        //Unused
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ViewHolder holder;
+
+            if (view == null)
+            {
+                LayoutInflater inflater = LayoutInflater.from(myContext);
+                view = inflater.inflate(R.layout.cell, null);
+                holder = new ViewHolder();
+                holder.cell = (Cell) getItem(i);
+                holder.top = view.findViewById(R.id.top);
+                holder.bottom = view.findViewById(R.id.bottom);
+                holder.left = view.findViewById(R.id.left);
+                holder.right = view.findViewById(R.id.right);
+                holder.center = view.findViewById(R.id.center);
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+
+            updateCell(holder);
+
+            return view;
+        }
+    }
+
+    public class ViewHolder
+    {
+        public Cell cell;
+        public View top, bottom, left, right, center;
+    }
+}
+
+
+activity_main.xml-
+
+<?xml version="1.0" encoding="utf-8"?>
+<Custom.MyRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.justinwise.mazegenerator.MainActivity"
+    android:background="@color/black">
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnWidth="50dp"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/grid"
+        android:stretchMode="spacingWidth">
+
+    </GridView>
+
+
+
+</Custom.MyRelativeLayout>
+
+
+Cell.xml-
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@color/colorAccent">
+
+    <View
+        android:background="@color/blue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/top"
+        android:id="@+id/center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:id="@+id/top"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/center"
+        android:background="@color/white"
+        android:id="@+id/bottom"/>
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/center"
+        android:background="@color/white"
+        android:id="@+id/right"/>
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/center"
+        android:background="@color/white"
+        android:id="@+id/left"/>
+</RelativeLayout>
+
+
+Cell.java-
+
+package Custom;
+
+/**
+ * Created by jwise200 on 12/24/2016.
+ */
+
+public class Cell {
+    public boolean visited;
+    public boolean topWall, bottomWall, leftWall, rightWall;
+
+    public Cell()
+    {
+        visited = false;
+        topWall = true;
+        bottomWall = true;
+        leftWall = true;
+        rightWall = true;
+    }
+
+    public void removeWall(Adjacent wall)
+    {
+        if (wall.equals(Adjacent.TOP))
+            topWall = false;
+        else if (wall.equals(Adjacent.RIGHT))
+            rightWall = false;
+        else if (wall.equals(Adjacent.BOTTOM))
+            bottomWall = false;
+        else if (wall.equals(Adjacent.LEFT))
+            leftWall = false;
+        else throw new IllegalArgumentException();
+    }
+}

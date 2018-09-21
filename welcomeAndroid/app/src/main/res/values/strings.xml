@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WelcomeAndroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="Click_Here">Click Here to see another screen!</string>
+</resources>

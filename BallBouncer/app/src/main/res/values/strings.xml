@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BallBouncer</string>
+    <string name="change_color">Change Color</string>
+    <string name="two_fifty_five">255</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="go">Go</string>
+    <string name="clear">Clear Screen</string>
+</resources>
