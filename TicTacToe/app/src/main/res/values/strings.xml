@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="standard_game">Standard Game</string>
+    <string name="reverse_game">Reverse Game</string>
+    <string name="instructions">X Goes First.\nTap any cell to move.\nGood Luck!</string>
+    <string name="title">Welcome to Justin\'s Tic Tac Toe App!</string>
+    <string name="gameTypeSignifierPlaceHolder">This is the type of game you are playing.</string>
+    <string name="standardGameSignifier">Standard Game</string>
+    <string name="reverseGameSignifier">Reverse Game</string>
+    <string name="mainMenu">Main Menu</string>
+    <string name="playAgain">Play Again</string>
+    <string name="wins">WINS!</string>
+    <string name="blank"> </string>
+    <string name="restart">Restart</string>
+    <string name="singlePlayer">Single Player</string>
+    <string name="twoPlayer">Two Player</string>
+    <string name="play">Play</string>
+</resources>

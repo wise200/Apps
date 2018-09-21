@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pushups At Dawn</string>
+    <string name="wakeUp">Wake Up!</string>
+    <string name="exampleTime">00:00</string>
+    <string name="exampleQuestion">11 X 10</string>
+    <string name="exampleTimer">3.14</string>
+    <string name="exampleStreak">Streak: 2</string>
+    <string name="exampleAnswer">Answer</string>
+    <string name="correct">Correct!</string>
+    <string name="incorrect">Incorrect!</string>
+    <string name="continueText">Continue</string>
+    <string name="exampleCount">10</string>
+    <string name="exampleExercise">Squats</string>
+    <string name="title">New Exercise</string>
+    <string name="count">Count</string>
+    <string name="type">Type</string>
+    <string name="create">Create</string>
+    <string name="done">Done</string>
+    <string name="addExercise">Add Exercise</string>
+    <string name="title_activity_edit_exercises_list">EditExercisesList</string>
+</resources>

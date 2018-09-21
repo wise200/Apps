@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@drawable/exercise_list_bg_selector">
+
+    <TextView
+
+        android:id="@+id/exerciseCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exampleCount"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="55sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/exerciseType"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/exampleExercise"
+        android:textSize="40sp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:buttonTint="@color/colorAccent"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:layout_marginRight="20dp"
+        android:id="@+id/radioButton"/>
+
+
+
+
+</RelativeLayout>

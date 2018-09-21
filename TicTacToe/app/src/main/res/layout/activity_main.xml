@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="memorytrainer.jwise200.com.tictactoe.MainActivity"
+    android:background="@color/background">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/instructions"
+        android:id="@+id/instructions"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title"
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/standard_game"
+        android:textOn="@string/reverse_game"
+        android:id="@+id/gameTypeButton"
+        android:layout_below="@+id/instructions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mainMenuButtonMargins" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerNumButton"
+        android:layout_below="@+id/gameTypeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mainMenuButtonMargins"
+        android:checked="false"
+        android:textOff="@string/singlePlayer"
+        android:textOn="@string/twoPlayer"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon"
+        android:layout_above="@+id/instructions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/mainMenuButtonMargins"
+        android:background="@drawable/icon"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/play"
+        android:id="@+id/playButton"
+        android:layout_below="@+id/playerNumButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mainMenuButtonMargins"/>
+
+
+</RelativeLayout>
